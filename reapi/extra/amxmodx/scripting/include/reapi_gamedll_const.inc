@@ -538,7 +538,7 @@ enum GamedllFunc_CBasePlayer
 
 	/*
 	* Description:      -
-	* Return type:      BOOL
+	* Return type:      int
 	* Params:           (const this, const pItem)
 	*/
 	RG_CBasePlayer_AddPlayerItem,
