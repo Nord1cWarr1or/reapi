@@ -28,38 +28,20 @@
 
 #pragma once
 
-enum SecondaryAtkState : uint8_t
-{
-	WEAPON_SECONDARY_ATTACK_NONE = 0,
-	WEAPON_SECONDARY_ATTACK_SET,
-	WEAPON_SECONDARY_ATTACK_BLOCK
-};
-
-class CBasePlayerWeapon;
-class CCSPlayerWeapon: public CCSPlayerItem
-{
-	DECLARE_CLASS_TYPES(CCSPlayerWeapon, CCSPlayerItem);
+class IObjectContainer {
 public:
-	CCSPlayerWeapon() :
-		m_iStateSecondaryAttack(WEAPON_SECONDARY_ATTACK_NONE)
-	{
-	}
+	virtual ~IObjectContainer() {}
 
-	virtual BOOL DefaultDeploy(char *szViewModel, char *szWeaponModel, int iAnim, char *szAnimExt, int skiplocal = 0) = 0;
-	virtual int DefaultReload(int iClipSize, int iAnim, float fDelay) = 0;
-	virtual bool DefaultShotgunReload(int iAnim, int iStartAnim, float fDelay, float fStartDelay, const char *pszReloadSound1 = nullptr, const char *pszReloadSound2 = nullptr) = 0;
-	virtual void KickBack(float up_base, float lateral_base, float up_modifier, float lateral_modifier, float up_max, float lateral_max, int direction_change) = 0;
-	virtual void SendWeaponAnim(int iAnim, int skiplocal = 0) = 0;
+	virtual void Init() = 0;
 
-	CBasePlayerWeapon *BasePlayerWeapon() const;
+	virtual bool Add(void *newObject) = 0;
+	virtual bool Remove(void *object) = 0;
+ 	virtual void Clear(bool freeElementsMemory) = 0;
 
-public:
-	SecondaryAtkState m_iStateSecondaryAttack;
-	float m_flBaseDamage;
+ 	virtual void *GetFirst() = 0;
+	virtual void *GetNext() = 0;
+
+	virtual int CountElements() = 0;
+	virtual bool Contains(void *object) = 0;
+	virtual bool IsEmpty() = 0;
 };
-
-// Inlines
-inline CBasePlayerWeapon *CCSPlayerWeapon::BasePlayerWeapon() const
-{
-	return reinterpret_cast<CBasePlayerWeapon *>(this->m_pContainingEntity);
-}

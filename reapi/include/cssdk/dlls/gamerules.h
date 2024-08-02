@@ -531,7 +531,7 @@ public:
 	// check if the scenario has been won/lost
 	virtual void CheckWinConditions() = 0;
 	virtual void RemoveGuns() = 0;
-	virtual void GiveC4() = 0;
+	virtual CBasePlayer *GiveC4() = 0;
 	virtual void ChangeLevel() = 0;
 	virtual void GoToIntermission() = 0;
 
@@ -552,6 +552,8 @@ public:
 
 	virtual bool HasRoundTimeExpired() = 0;
 	virtual bool IsBombPlanted() = 0;
+
+	virtual void SendDeathMessage(CBaseEntity *pKiller, CBasePlayer *pVictim, CBasePlayer *pAssister, entvars_t *pevInflictor, const char *killerWeaponName, int iDeathMessageFlags, int iRarityOfKill) = 0;
 
 public:
 	bool ShouldSkipShowMenu() const { return m_bSkipShowMenu; }

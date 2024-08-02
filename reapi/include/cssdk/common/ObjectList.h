@@ -28,38 +28,38 @@
 
 #pragma once
 
-enum SecondaryAtkState : uint8_t
-{
-	WEAPON_SECONDARY_ATTACK_NONE = 0,
-	WEAPON_SECONDARY_ATTACK_SET,
-	WEAPON_SECONDARY_ATTACK_BLOCK
-};
+#include "IObjectContainer.h"
 
-class CBasePlayerWeapon;
-class CCSPlayerWeapon: public CCSPlayerItem
-{
-	DECLARE_CLASS_TYPES(CCSPlayerWeapon, CCSPlayerItem);
+class ObjectList: public IObjectContainer {
 public:
-	CCSPlayerWeapon() :
-		m_iStateSecondaryAttack(WEAPON_SECONDARY_ATTACK_NONE)
-	{
-	}
+	EXT_FUNC void Init();
+	EXT_FUNC bool Add(void *newObject);
+	EXT_FUNC void *GetFirst();
+	EXT_FUNC void *GetNext();
 
-	virtual BOOL DefaultDeploy(char *szViewModel, char *szWeaponModel, int iAnim, char *szAnimExt, int skiplocal = 0) = 0;
-	virtual int DefaultReload(int iClipSize, int iAnim, float fDelay) = 0;
-	virtual bool DefaultShotgunReload(int iAnim, int iStartAnim, float fDelay, float fStartDelay, const char *pszReloadSound1 = nullptr, const char *pszReloadSound2 = nullptr) = 0;
-	virtual void KickBack(float up_base, float lateral_base, float up_modifier, float lateral_modifier, float up_max, float lateral_max, int direction_change) = 0;
-	virtual void SendWeaponAnim(int iAnim, int skiplocal = 0) = 0;
+	ObjectList();
+	virtual ~ObjectList();
 
-	CBasePlayerWeapon *BasePlayerWeapon() const;
+	EXT_FUNC void Clear(bool freeElementsMemory = false);
+	EXT_FUNC int CountElements();
+	void *RemoveTail();
+	void *RemoveHead();
 
-public:
-	SecondaryAtkState m_iStateSecondaryAttack;
-	float m_flBaseDamage;
+	bool AddTail(void *newObject);
+	bool AddHead(void *newObject);
+	EXT_FUNC bool Remove(void *object);
+	EXT_FUNC bool Contains(void *object);
+	EXT_FUNC bool IsEmpty();
+
+	typedef struct element_s {
+		struct element_s *prev;	// pointer to the last element or NULL
+		struct element_s *next;	// pointer to the next elemnet or NULL
+		void *object;		// the element's object
+	} element_t;
+
+protected:
+	element_t *m_head;    // first element in list
+	element_t *m_tail;    // last element in list
+	element_t *m_current; // current element in list
+	int m_number;
 };
-
-// Inlines
-inline CBasePlayerWeapon *CCSPlayerWeapon::BasePlayerWeapon() const
-{
-	return reinterpret_cast<CBasePlayerWeapon *>(this->m_pContainingEntity);
-}

@@ -582,6 +582,9 @@
     <ClInclude Include="..\include\cssdk\public\interface.h">
       <Filter>include\cssdk\public</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\cssdk\public\utlarray.h">
+      <Filter>include\cssdk\public</Filter>
+    </ClInclude>
     <ClInclude Include="..\include\cssdk\public\utlmemory.h">
       <Filter>include\cssdk\public</Filter>
     </ClInclude>
@@ -699,7 +702,7 @@
     <ClInclude Include="..\common\info.h">
       <Filter>common</Filter>
     </ClInclude>
-    <ClInclude Include="..\src\entity_callback.h">
+    <ClInclude Include="..\src\entity_callback_dispatcher.h">
       <Filter>src</Filter>
     </ClInclude>
     <ClInclude Include="..\src\amx_hook.h">
@@ -722,6 +725,15 @@
     </ClInclude>
     <ClInclude Include="..\include\cssdk\dlls\gib.h">
       <Filter>include\cssdk\dlls</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\cssdk\engine\IMessageManager.h">
+      <Filter>include\cssdk\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\hook_message_manager.h">
+      <Filter>src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\natives\natives_hookmessage.h">
+      <Filter>src\natives</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -821,11 +833,17 @@
     <ClCompile Include="..\common\info.cpp">
       <Filter>common</Filter>
     </ClCompile>
-    <ClCompile Include="..\src\entity_callback.cpp">
+    <ClCompile Include="..\src\entity_callback_dispatcher.cpp">
       <Filter>src</Filter>
     </ClCompile>
     <ClCompile Include="..\src\amx_hook.cpp">
       <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\hook_message_manager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\natives\natives_hookmessage.cpp">
+      <Filter>src\natives</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

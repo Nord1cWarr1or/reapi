@@ -42,6 +42,7 @@ void OnMetaDetach()
 {
 	// clear all hooks?
 	g_hookManager.Clear();
+	g_messageHookManager.Clear();
 	g_queryFileManager.Clear();
 
 	if (api_cfg.hasVTC()) {
@@ -68,8 +69,9 @@ void ServerDeactivate_Post()
 	g_pEdicts = nullptr;
 	api_cfg.ServerDeactivate();
 	g_hookManager.Clear();
+	g_messageHookManager.Clear();
 	g_queryFileManager.Clear();
-	g_entCallback.Clear();
+	EntityCallbackDispatcher().DeleteAllCallbacks();
 
 	g_pFunctionTable->pfnSpawn = DispatchSpawn;
 	g_pFunctionTable->pfnKeyValue = KeyValue;
@@ -140,6 +142,6 @@ void OnFreeEntPrivateData(edict_t *pEdict)
 		return;
 	}
 
-	g_entCallback.Clear(pEntity);
+	EntityCallbackDispatcher().DeleteExistingCallbacks(pEntity);
 	SET_META_RESULT(MRES_IGNORED);
 }
