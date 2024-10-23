@@ -717,6 +717,7 @@
 * All monsters need this data
 */
 #define DONT_BLEED                      -1
+#define BLOOD_COLOR_DARKRED             223
 #define BLOOD_COLOR_RED                 247
 #define BLOOD_COLOR_YELLOW              195
 #define BLOOD_COLOR_GREEN               BLOOD_COLOR_YELLOW
