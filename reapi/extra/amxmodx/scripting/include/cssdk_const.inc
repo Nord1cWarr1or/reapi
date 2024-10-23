@@ -1586,3 +1586,6 @@ enum KillRarity
 	KILLRARITY_REVENGE          = 0x100, // Revenge by the killer
 	KILLRARITY_INAIR            = 0x200  // Killer was in the air (skill to deal with high inaccuracy)
 };
+
+#define GROUP_OP_AND    0
+#define GROUP_OP_NAND   1
