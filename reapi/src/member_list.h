@@ -255,6 +255,7 @@ enum CSGameRules_Members
 	m_flTimeLimit,
 	m_flGameStartTime,
 	m_bTeamBalanced,
+	m_bGameOver,
 };
 
 // CBaseEntity
@@ -821,6 +822,7 @@ enum CSPlayer_Members
 	m_flDuckSpeedMultiplier,
 	m_iNumKilledByUnanswered,
 	m_bPlayerDominated,
+	m_iUserID,
 };
 
 enum CBasePlayerItem_Members
@@ -853,8 +855,6 @@ enum CBasePlayerWeapon_Members
 	m_Weapon_flAccuracy,
 	m_Weapon_flLastFire,
 	m_Weapon_iShotsFired,
-	//m_Weapon_vVecAiming,
-	//m_Weapon_model_name,
 	m_Weapon_flGlock18Shoot,
 	m_Weapon_iGlock18ShotsFired,
 	m_Weapon_flFamasShoot,
@@ -867,6 +867,7 @@ enum CBasePlayerWeapon_Members
 	m_Weapon_usFireFamas,
 	m_Weapon_flPrevPrimaryAttack,
 	m_Weapon_flLastFireTime,
+	m_Weapon_vVecAiming
 };
 
 enum CWeaponBox_Members

@@ -251,6 +251,7 @@ member_t memberlist_gamerules[] = {
 	GM_MEMBERS(m_flTimeLimit),
 	GM_MEMBERS(m_flGameStartTime),
 	GM_MEMBERS(m_bTeamBalanced),
+	GM_MEMBERS(m_bGameOver),
 };
 
 member_t memberlist_base[] = {
@@ -793,6 +794,7 @@ member_t memberlist_csplayer[] = {
 	CSPL_MEMBERS(m_flDuckSpeedMultiplier),
 	CSPL_MEMBERS(m_iNumKilledByUnanswered),
 	CSPL_MEMBERS(m_bPlayerDominated),
+	CSPL_MEMBERS(m_iUserID),
 };
 
 member_t memberlist_baseitem[] = {
@@ -823,8 +825,6 @@ member_t memberlist_baseweapon[] = {
 	BASEWPN_MEMBERS(flAccuracy),
 	BASEWPN_MEMBERS(flLastFire),
 	BASEWPN_MEMBERS(iShotsFired),
-	//BASEWPN_MEMBERS(vVecAiming),
-	//BASEWPN_MEMBERS(model_name),
 	BASEWPN_MEMBERS(flGlock18Shoot),
 	BASEWPN_MEMBERS(iGlock18ShotsFired),
 	BASEWPN_MEMBERS(flFamasShoot),
@@ -837,6 +837,7 @@ member_t memberlist_baseweapon[] = {
 	BASEWPN_MEMBERS(usFireFamas),
 	BASEWPN_MEMBERS(flPrevPrimaryAttack),
 	BASEWPN_MEMBERS(flLastFireTime),
+	BASEWPN_MEMBERS(vVecAiming),
 };
 
 member_t memberlist_weaponbox[] = {

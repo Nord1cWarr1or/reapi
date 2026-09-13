@@ -1982,6 +1982,14 @@ enum CSGameRules_Members
 	* Set params:       set_member_game(member, bool:value);
 	*/
 	m_bTeamBalanced,
+
+	/*
+	* Description:      TRUE when the game is over (intermission)
+	* Member type:      bool
+	* Get params:       get_member_game(member);
+	* Set params:       set_member_game(member, bool:value);
+	*/
+	m_bGameOver,
 };
 
 /**
@@ -4917,6 +4925,14 @@ enum CCSPlayer_Members
 	* Set params:       set_member(index, member, value, element);
 	*/
 	m_bPlayerDominated,
+
+	/*
+	* Description:      Client user id (.userid)
+	* Member type:      int
+	* Get params:       get_member(index, member);
+	* Set params:       set_member(index, member, value);
+	*/
+	m_iUserID,
 };
 
 /**
@@ -5217,6 +5233,14 @@ enum CBasePlayerWeapon_Members
 	* Set params:       set_member(index, member, Float:value);
 	*/
 	m_Weapon_flLastFireTime,
+
+	/*
+	* Description:      The weapon aiming vector
+	* Member type:      class Vector
+	* Get params:       get_member(index, member, Float:output[3]);
+	* Set params:       set_member(index, member, Float:dest[3]);
+	*/
+	m_Weapon_vVecAiming
 };
 
 /**
