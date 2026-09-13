@@ -165,6 +165,16 @@ BOOL SV_CheckUserInfo(IRehldsHook_SV_CheckUserInfo *chain, netadr_t *adr, char *
 	return SV_CheckUserInfo_AMXX(chain, adr, (size_t)userinfo, bIsReconnecting, iReconnectSlot, name);
 }
 
+bool ValidateCommand(IRehldsHook_ValidateCommand *chain, const char *cmd, cmd_source_t src, IGameClient *client)
+{
+	auto original = [chain, client](const char *_cmd, cmd_source_t _src, int _client)
+	{
+		return chain->callNext(_cmd, _src, client);
+	};
+
+	return callForward<bool>(RH_ValidateCommand, original, cmd, src, client ? client->GetId() + 1 : 0);
+}
+
 int PF_precache_generic_I(IRehldsHook_PF_precache_generic_I *chain, const char *s)
 {
 	auto original = [chain](const char *_s)

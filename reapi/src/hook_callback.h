@@ -397,6 +397,7 @@ edict_t *ED_Alloc(IRehldsHook_ED_Alloc* chain);
 void ED_Free(IRehldsHook_ED_Free* chain, edict_t *entity);
 void SV_ClientPrintf(IRehldsHook_SV_ClientPrintf* chain, const char *string);
 bool SV_AllowPhysent(IRehldsHook_SV_AllowPhysent* chain, edict_t* check, edict_t* sv_player);
+bool ValidateCommand(IRehldsHook_ValidateCommand *chain, const char *cmd, cmd_source_t src, IGameClient *client);
 
 /*
 * ReGameDLL functions

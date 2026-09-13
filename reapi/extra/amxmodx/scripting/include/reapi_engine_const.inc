@@ -191,6 +191,18 @@ enum EngineFunc
 	*/
 	RH_SV_SendResources,
 
+	/*
+	* Description:  Called to validate a client command before execution.
+	* Return type:  bool
+	* Params:       (const command[], const sourcetype, const client)
+	* @note         sourcetype: 0 = src_client (net connection), 1 = src_command
+	*               (command buffer); client is a player index, 0 when the
+	*               command is not bound to a client. Return false via
+	*               SetHookChainReturn(ATYPE_BOOL, false) + HC_SUPERCEDE to
+	*               reject the command.
+	*/
+	RH_ValidateCommand,
+
 };
 
 /**
